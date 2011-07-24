@@ -1,6 +1,8 @@
 * jQuery "Human Typist" plug-in
 
-jQuery Plugin homepage: http://plugins.jquery.com/project/humanTypist
+  jQuery Plugin homepage:
+  http://plugins.jquery.com/project/humanTypist
+
 ** Description
 
    *A really simple-to-use human-like typing animation*.
