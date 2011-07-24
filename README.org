@@ -1,9 +1,6 @@
 * jQuery "Human Typist" plug-in
 
-** Author
-
-Kenny Meyer <knny.myer@gmail.com> (@kennymyer)
-
+jQuery Plugin homepage: http://plugins.jquery.com/project/humanTypist
 ** Description
 
    *A really simple-to-use human-like typing animation*.
@@ -52,3 +49,8 @@ Possible options:
   faucibus. Pellentesque in lectus sapien.
 </p>
 #+end_src
+
+** Author
+
+Kenny Meyer <knny.myer@gmail.com> (@kennymyer)
+
