@@ -1,9 +1,9 @@
 /**
  *
- * Version: 	1.0.0
- * Author:		Kenny Meyer
- * Contact: 	knny.myer@gmail.com
- * Twitter:		@kennymyer
+ * Version:     1.0.0
+ * Author:      Kenny Meyer
+ * Contact:     knny.myer@gmail.com
+ * Twitter:     @kennymyer
  *
  * Copyright (c) 2011 Kenny Meyer
  *
@@ -38,7 +38,7 @@
       "grandma": 2000,
       "beginner": 1500,
       "upcomer": 1000,
-      "chatter": 500,
+      "scriptkiddie": 500,
       "secretary": 300,
       "hacker": 200,
       "elite": 150,
