@@ -25,6 +25,9 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
+String::replaceAt = (index, char) ->
+  @substr(0, index) + char + @substr(index + char.length)
+
 (($) ->
   $.fn.humanTypist = (options) ->
     settings = $.extend(speed: "beginner", options)
@@ -41,16 +44,23 @@
     humanize = (speed) ->
       Math.floor speed * Math.random()
 
-    make_mistake = (obj, next) ->
-      chars = "abcdefghiklmnopqrstuvwxyz"
-      char = chars[Math.random() * chars.length]
-      $(obj).text obj.substring(0, next)
-      $(obj).text obj.substring(0, next - 1)
+    # Add some errors to the text
+    erronize = (text) ->
+      ntext = text
+      i = 0
+      while i <= text.length
+        i += 10
+        if ntext.substring(i + 10) != " "
+          ntext = ntext.substring(0, i + 10) + "#" + ntext.substring(i + 10)
+      return ntext
 
     type = (e, text, speed) ->
       next = $(e).text().length + 1
       if next < text.length
         $(e).text text.substr(0, next)
+        # TODO:
+        if text.charAt(next-1) == "#"
+          $(e).text().replaceAt(next-1, "")
         setTimeout (->
           type e, text, speed
         ), humanize(speed)
@@ -58,6 +68,7 @@
     @each ->
       speed = speed_options[settings.speed]
       text = $(this).text()
+      text = erronize text
       $(this).text ""
       type this, text, speed
 ) jQuery

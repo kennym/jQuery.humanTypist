@@ -1,7 +1,10 @@
 (function() {
+  String.prototype.replaceAt = function(index, char) {
+    return this.substr(0, index) + char + this.substr(index + char.length);
+  };
   (function($) {
     return $.fn.humanTypist = function(options) {
-      var humanize, make_mistake, settings, speed_options, type;
+      var erronize, humanize, settings, speed_options, type;
       settings = $.extend({
         speed: "beginner"
       }, options);
@@ -18,18 +21,26 @@
       humanize = function(speed) {
         return Math.floor(speed * Math.random());
       };
-      make_mistake = function(obj, next) {
-        var char, chars;
-        chars = "abcdefghiklmnopqrstuvwxyz";
-        char = chars[Math.random() * chars.length];
-        $(obj).text(obj.substring(0, next));
-        return $(obj).text(obj.substring(0, next - 1));
+      erronize = function(text) {
+        var i, ntext;
+        ntext = text;
+        i = 0;
+        while (i <= text.length) {
+          i += 10;
+          if (ntext.substring(i + 10) !== " ") {
+            ntext = ntext.substring(0, i + 10) + "#" + ntext.substring(i + 10);
+          }
+        }
+        return ntext;
       };
       type = function(e, text, speed) {
         var next;
         next = $(e).text().length + 1;
         if (next < text.length) {
           $(e).text(text.substr(0, next));
+          if (text.charAt(next - 1) === "#") {
+            $(e).text().replaceAt(next - 1, "");
+          }
           return setTimeout((function() {
             return type(e, text, speed);
           }), humanize(speed));
@@ -39,6 +50,7 @@
         var speed, text;
         speed = speed_options[settings.speed];
         text = $(this).text();
+        text = erronize(text);
         $(this).text("");
         return type(this, text, speed);
       });
