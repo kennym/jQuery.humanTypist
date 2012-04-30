@@ -54,5 +54,5 @@ Possible options:
 
 ** Author
 
-Kenny Meyer <knny.myer@gmail.com> (@kennymyer)
+Kenny Meyer <knny.myer@gmail.com> (@meyerkenny)
 
